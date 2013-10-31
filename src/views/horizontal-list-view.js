@@ -1,10 +1,12 @@
 define([
     'streamhub-sdk/content/views/content-list-view',
     'streamhub-gallery/content/content-view-factory',
+    'streamhub-sdk/jquery',
     'text!streamhub-gallery/css/horizontal-list-view.css',
     'streamhub-sdk/debug',
     'inherits'
-], function (ContentListView, HorizontalContentViewFactory, HorizontalListViewCss, debug, inherits) {
+], function (ContentListView, HorizontalContentViewFactory, $,
+HorizontalListViewCss, debug, inherits) {
     'use strict';
 
     var log = debug('streamhub-gallery/views/horizontal-list-view');
