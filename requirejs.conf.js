@@ -12,7 +12,7 @@ requirejs.config({
     base64: 'lib/base64/base64',
     'event-emitter': 'lib/event-emitter/src/event-emitter',
     inherits: 'lib/inherits/inherits',
-    hammerjs: 'lib/hammerjs/hammer'
+    hammerjs: 'lib/hammerjs/dist/hammer'
   },
   packages: [{
     name: "streamhub-sdk",

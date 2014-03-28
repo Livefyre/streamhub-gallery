@@ -14,7 +14,7 @@
     "requirejs-plugins": "~1.0.2",
     "event-emitter": "git://github.com/Livefyre/event-emitter.git",
     "inherits": "git://github.com/Livefyre/inherits.git",
-    "hammerjs": "git://github.com/EightMedia/hammer.js.git"
+    "hammerjs": "git://github.com/EightMedia/hammer.js.git#v1.0.5"
   },
   "devDependencies": {
     "jasmine": "*",
