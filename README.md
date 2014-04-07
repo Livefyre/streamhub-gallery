@@ -17,7 +17,7 @@ streamhub-gallery depends on [streamhub-sdk](https://github.com/livefyre/streamh
 
 Include streamhub-gallery too.
 
-	<script src="http://livefyre-cdn-dev.s3.amazonaws.com/libs/apps/cheung31/streamhub-gallery/v1.0.0/streamhub-gallery.min.js"></script>
+	<script src="http://cdn.livefyre.com/libs/apps/Livefyre/streamhub-gallery/v0.2.2-build.14/streamhub-gallery.min.js"></script>
 	
 Optionally, include some reasonable default CSS rules for StreamHub Content. This stylesheet is provided by the StreamHub SDK.
 
