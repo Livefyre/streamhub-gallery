@@ -12,8 +12,10 @@ requirejs.config({
     base64: 'lib/base64/base64',
     'event-emitter': 'lib/event-emitter/src/event-emitter',
     inherits: 'lib/inherits/inherits',
-    hammerjs: 'lib/hammerjs/dist/hammer'
+    hammerjs: 'lib/hammerjs/dist/hammer',
+    debug: 'lib/debug/debug'
   },
+
   packages: [{
     name: "streamhub-sdk",
     location: "lib/streamhub-sdk/src/"
@@ -41,6 +43,16 @@ requirejs.config({
   },{
     name: 'streamhub-gallery-tests',
     location: './tests/'
+  },{
+    name: 'streamhub-sdk/ui',
+    location: 'lib/streamhub-sdk/src/ui'
+  },{
+    name: 'view',
+    location: 'lib/view/src',
+    main: 'view'
+  },{
+    name: 'auth',
+    location: 'lib/auth/src'
   }
   ],
   include: ['streamhub-gallery/animators/coverflow-animator', 'streamhub-gallery/animators/carousel-animator'],

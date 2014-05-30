@@ -1,11 +1,11 @@
 {
   "name": "streamhub-gallery",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "main": [
     "./src/main.js"
   ],
   "dependencies": {
-    "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git#~v2.0.4",
+    "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git#~v2",
     "jquery": "~1.10.1",
     "hogan": "latest",
     "requirejs": "~2.1.5",
@@ -19,7 +19,8 @@
   "devDependencies": {
     "jasmine": "*",
     "jasmine-jquery": "*",
-    "almond": "~0.2.5"
+    "almond": "~0.2.5",
+    "cajon": "~0.1.11"
   },
   "streamhub": {
     "icon": "http://i.imgur.com/FCHxNbU.png",
@@ -29,5 +30,9 @@
       "http://i.imgur.com/9VoyWji.png",
       "http://i.imgur.com/AC8dxxW.png"
     ]
+  },
+  "resolutions": {
+    "event-emitter": "933274c9e4",
+    "view": "~1.1"
   }
 }
