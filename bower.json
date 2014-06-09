@@ -32,7 +32,8 @@
     ]
   },
   "resolutions": {
-    "event-emitter": "933274c9e4",
-    "view": "~1.1"
+    "view": "~1.1",
+    "base64": "~0.4.0",
+    "jquery": "~1.10.1"
   }
 }
