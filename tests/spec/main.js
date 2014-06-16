@@ -85,7 +85,12 @@ define([
             it('calls the #_insert method to attach the content view into the DOM', function () {
                 spyOn(view, '_insert');
                 view.write(content);
-                expect(view._insert).toHaveBeenCalled();
+                waitsFor(function () {
+                    return view._insert.callCount;
+                });
+                runs(function () {
+                    expect(view._insert).toHaveBeenCalled();
+                });
             });
 
             describe('#_insert', function () {
@@ -101,13 +106,23 @@ define([
                 it('calls #_focus', function () {
                     spyOn(view, '_focus');
                     view.write(content);
-                    expect(view._focus).toHaveBeenCalled();
+                    waitsFor(function () {
+                        return view._focus.callCount;
+                    });
+                    runs(function () {
+                        expect(view._focus).toHaveBeenCalled();
+                    });
                 });
 
                 it('calls ._animator#animate', function () {
                     spyOn(view._animator, 'animate');
                     view.write(content);
-                    expect(view._animator.animate).toHaveBeenCalled();
+                    waitsFor(function () {
+                        return view._animator.animate.callCount;
+                    });
+                    runs(function () {
+                        expect(view._animator.animate).toHaveBeenCalled();
+                    });
                 });
             });
         });
@@ -221,10 +236,18 @@ define([
             });
 
             it('calls #_showNewNotification', function () {
+                var wrote2 = false;
                 spyOn(view, '_showNewNotification');
-                view.write(content2);
-                expect(view._showNewNotification).toHaveBeenCalled();
-                expect(view._newContentCount).toBe(1);
+                view.write(content2, function () {
+                    wrote2 = true;
+                });
+                waitsFor(function () {
+                    return wrote2;
+                })
+                runs(function () {
+                    expect(view._showNewNotification).toHaveBeenCalled();
+                    expect(view._newContentCount).toBe(2);
+                });
             });
         });
 

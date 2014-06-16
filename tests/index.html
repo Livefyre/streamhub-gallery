@@ -5,37 +5,39 @@
     <link rel="stylesheet" type="text/css" href="../lib/jasmine/lib/jasmine-core/jasmine.css">
 </head>
 <body>
-    <script src="../lib/requirejs/require.js" type="text/javascript"></script>
+    <script src="../lib/cajon/cajon.js" type="text/javascript"></script>
     <script src="/requirejs.conf.js" type="text/javascript"></script>
     <script type="text/javascript">
-        require([
-            'jasmine-html',
-            'jasmine-jquery',
-            'jquery',
-            '/tests/xunit-console-reporter.js'],
-        function (jasmine, jasmineJQuery, $) {
+    var deps = ['jasmine', 'jasmine-html', 'jquery'];
+    require(deps, function (jasmine, jasmineHtml, $) {
+        var jasmineEnv = jasmine.getEnv();
+        jasmineEnv.updateInterval = 1000;
+        // Copy jasmine globals
+        ['spyOn', 'waitsFor', 'waits', 'runs', 'expect'].forEach(function (key) {
+            window[key] = function () {
+                var spec = jasmine.getEnv().currentSpec;
+                return spec[key].apply(spec, arguments);
+            };
+        });
+        ['beforeEach', 'afterEach', 'describe', 'it', 'xit'].forEach(function (key) {
+            window[key] = jasmineEnv[key].bind(jasmineEnv);
+        });
+        require(['tests/spec/main'], function() {
             var jasmineEnv = jasmine.getEnv();
             jasmineEnv.updateInterval = 1000;
             
             var htmlReporter = new jasmine.HtmlReporter();
-            var consoleReporter = new jasmine.XUnitConsoleReporter();
 
             jasmineEnv.addReporter(htmlReporter);
-            //jasmineEnv.addReporter(tapReporter);
-            jasmineEnv.addReporter(consoleReporter);
-
             jasmineEnv.specFilter = function(spec) {
                 return htmlReporter.specFilter(spec);
             };
 
-            var specs = [];
-            specs.push('tests/spec/main');
             $(function(){
-                require(specs, function(){
-                    jasmineEnv.execute();
-                });
+                jasmineEnv.execute();
             });
         });
+    });
     </script> 
 </body>
 </html>

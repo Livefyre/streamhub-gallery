@@ -8,7 +8,7 @@ define([
     'streamhub-sdk/content/content-view-factory',
     'streamhub-gallery/content/views/content-view',
     'streamhub-gallery/content/views/tiled-attachment-list-view',
-    'streamhub-gallery/content/views/twitter-content-view',
+    'streamhub-sdk/content/views/twitter-content-view',
     'streamhub-gallery/content/views/facebook-content-view',
     'streamhub-gallery/content/views/instagram-content-view',
     'streamhub-sdk/content/views/gallery-on-focus-view',
