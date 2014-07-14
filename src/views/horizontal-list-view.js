@@ -18,6 +18,7 @@ HorizontalListViewCss, debug, inherits) {
      *
      * @param opts {Object} A set of options to config the view with
      * @param opts.el {HTMLElement} The element in which to render the streamed content
+     * @param opts.contentViewFactory {ViewFactory} [opts.contentViewFactory=HorizontalContentViewFactory] The view factory to use when creating content views
      * @exports streamhub-gallery/views/horizontal-list-view
      * @augments streamhub-sdk/views/list-view
      * @constructor
@@ -27,7 +28,7 @@ HorizontalListViewCss, debug, inherits) {
         this._id = 'streamhub-horizontal-list-'+new Date().getTime();
         this._aspectRatio = opts.aspectRatio || 16/9;
 
-        opts.contentViewFactory = new HorizontalContentViewFactory();
+        opts.contentViewFactory = opts.contentViewFactory || new HorizontalContentViewFactory();
         ContentListView.call(this, opts);
 
         if (!STYLE_EL) {
