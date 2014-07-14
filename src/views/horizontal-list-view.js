@@ -27,7 +27,7 @@ HorizontalListViewCss, debug, inherits) {
         this._id = 'streamhub-horizontal-list-'+new Date().getTime();
         this._aspectRatio = opts.aspectRatio || 16/9;
 
-        opts.contentViewFactory = new HorizontalContentViewFactory();
+        opts.contentViewFactory = opts.contentViewFactory || new HorizontalContentViewFactory();
         ContentListView.call(this, opts);
 
         if (!STYLE_EL) {
