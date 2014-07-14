@@ -18,6 +18,7 @@ HorizontalListViewCss, debug, inherits) {
      *
      * @param opts {Object} A set of options to config the view with
      * @param opts.el {HTMLElement} The element in which to render the streamed content
+     * @param opts.contentViewFactory {ViewFactory} [opts.contentViewFactory=HorizontalContentViewFactory] The view factory to use when creating content views
      * @exports streamhub-gallery/views/horizontal-list-view
      * @augments streamhub-sdk/views/list-view
      * @constructor
