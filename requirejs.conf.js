@@ -2,7 +2,7 @@ requirejs.config({
   baseUrl: '/',
   paths: {
     jquery: 'lib/jquery/jquery',
-	jasmine: 'lib/jasmine/lib/jasmine-core/jasmine',
+    jasmine: 'lib/jasmine/lib/jasmine-core/jasmine',
     'jasmine-html': 'lib/jasmine/lib/jasmine-core/jasmine-html',
     'jasmine-jquery': 'lib/jasmine-jquery/lib/jasmine-jquery',
     text: 'lib/requirejs-text/text',
@@ -11,6 +11,7 @@ requirejs.config({
     json: 'lib/requirejs-plugins/src/json',
     base64: 'lib/base64/base64',
     'event-emitter': 'lib/event-emitter/src/event-emitter',
+    'livefyre-package-attribute': 'lib/livefyre-package-attribute/src/main',
     inherits: 'lib/inherits/inherits',
     hammerjs: 'lib/hammerjs/dist/hammer',
     debug: 'lib/debug/debug'
@@ -32,20 +33,30 @@ requirejs.config({
     name: "streamhub-sdk/modal",
     location: "lib/streamhub-sdk/src/modal"
   },{
+    name: 'streamhub-sdk/ui',
+    location: 'lib/streamhub-sdk/src/ui'
+  },{
     name: "streamhub-sdk-tests",
     location: "lib/streamhub-sdk/tests/"
   },{
     name: "stream",
     location: "lib/stream/src"
   },{
-	name: "streamhub-gallery",
+    name: "streamhub-gallery",
   	location: "./src"
   },{
     name: 'streamhub-gallery-tests',
     location: './tests/'
   },{
-    name: 'streamhub-sdk/ui',
-    location: 'lib/streamhub-sdk/src/ui'
+    name: 'streamhub-ui',
+    location: 'lib/streamhub-ui/src'
+  },{
+    name: 'streamhub-share',
+    location: 'lib/streamhub-share/src',
+    main: 'share-button.js'
+  },{
+    name: "livefyre-bootstrap",
+    location: "lib/livefyre-bootstrap/src"
   },{
     name: 'view',
     location: 'lib/view/src',
