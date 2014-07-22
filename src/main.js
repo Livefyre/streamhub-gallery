@@ -7,8 +7,9 @@ define([
     'hgn!streamhub-gallery/templates/gallery-view',
     'streamhub-sdk/debug',
     'inherits',
-    'text!streamhub-gallery/css/gallery-view.css'
-], function ($, Hammer, Animator, HorizontalListView, hasMore, GalleryViewTemplate, debug, inherits, css) {
+    'text!streamhub-gallery/css/gallery-view.css',
+    'streamhub-sdk/views/streams/more'
+], function ($, Hammer, Animator, HorizontalListView, hasMore, GalleryViewTemplate, debug, inherits, css, More) {
     'use strict';
 
     var log = debug('streamhub-sdk/views/list-view');
@@ -28,14 +29,23 @@ define([
      * @constructor
      */
     var GalleryView = function (opts) {
+        var self = this;
         opts = opts || {};
         opts.aspectRatio = opts.aspectRatio || 4/3;
         this._numVisible = opts.numVisible || 3;
         opts.initial = opts.initial || this._numVisible * 2
         this.showMoreElSelector = '.hub-list-more';
 
-        //opts.more = opts.more || this._createMoreStream({ initial: this._numVisible * 2 });
-
+        this._newQueue = new More({
+            highWaterMark: 0,
+            initial: 0
+        });
+        this._newQueue.on('readable', function () {
+            var content;
+            while (content = self._newQueue.read()) {
+                self.add(content);
+            }
+        });
         this._id = this.galleryListViewClassName + '-' + new Date().getTime();
         this._activeContentView = null;
         this._newContentCount = 0;
@@ -68,6 +78,25 @@ define([
         animator.setView(this);
         this._animator = animator;
         this.jumpTo(this._activeContentView);
+    };
+
+
+    /**
+     * @private
+     * Called automatically by the Writable base class when .write() is called
+     * @param content {Content} Content to display in the ListView
+     * @param requestMore {function} A function to call when done writing, so
+     *     that _write will be called again with more data
+     */
+    GalleryView.prototype._write = function (content, requestMore) {
+        this._newQueue.write(content);
+
+        // If there is new content and we're not focused at the head, show notification
+        if (this.views.indexOf(this._activeContentView) !== 0) {
+            this._newContentCount++;
+            this._showNewNotification();
+        }
+        requestMore();
     };
 
     /**
