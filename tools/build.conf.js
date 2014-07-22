@@ -9,6 +9,8 @@
   include: [
     'almond'
   ],
+  buildCSS: true,
+  separateCSS: true,
   stubModules: ['text', 'hgn', 'json'],
   out: "../dist/streamhub-gallery.min.js",
   pragmasOnSave: {

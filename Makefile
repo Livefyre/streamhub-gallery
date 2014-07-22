@@ -5,7 +5,7 @@ all: build
 build: node_modules
 
 dist: build src requirejs.conf.js tools
-	mkdir dist
+	mkdir -p dist
 	./node_modules/requirejs/bin/r.js -o ./tools/build.conf.js	
 
 # if package.json changes, install

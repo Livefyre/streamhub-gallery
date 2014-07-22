@@ -14,6 +14,7 @@ requirejs.config({
     'livefyre-package-attribute': 'lib/livefyre-package-attribute/src/main',
     inherits: 'lib/inherits/inherits',
     hammerjs: 'lib/hammerjs/dist/hammer',
+    rework: 'lib/rework/rework',
     debug: 'lib/debug/debug'
   },
 
@@ -64,9 +65,24 @@ requirejs.config({
   },{
     name: 'auth',
     location: 'lib/auth/src'
+  },{
+    name: "css",
+    location: "lib/require-css",
+    main: "css"
+  },{
+    name: "less",
+    location: "lib/require-less",
+    main: "less"
   }
   ],
   include: ['streamhub-gallery/animators/coverflow-animator', 'streamhub-gallery/animators/carousel-animator'],
+  css: {
+    clearFileEachBuild: 'dist/streamhub-gallery.min.css',
+    transformEach: {
+      requirejs: 'lib/livefyre-package-attribute/tools/prefix-css-requirejs',
+      node: 'lib/livefyre-package-attribute/tools/prefix-css-node'
+    }
+  },
   shim: {
     jasmine: {
       exports: 'jasmine'
@@ -83,6 +99,9 @@ requirejs.config({
     },
     hammerjs: {
         exports: 'Hammer'
+    },
+    rework: {
+      exports: 'rework'
     }
   },
   urlArgs: "_=" +  (new Date()).getTime()
