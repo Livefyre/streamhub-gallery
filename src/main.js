@@ -3,13 +3,13 @@ define([
     'hammerjs',
     'streamhub-gallery/animators/animator',
     'streamhub-gallery/views/horizontal-list-view',
-    'text!streamhub-gallery/css/gallery-view.css',
+    'streamhub-sdk/views/mixins/more-mixin',
     'hgn!streamhub-gallery/templates/gallery-view',
     'streamhub-sdk/debug',
     'inherits',
-    'streamhub-gallery/package-attribute',
-    'css!streamhub-sdk/css/style'
-], function ($, Hammer, Animator, HorizontalListView, GalleryViewCss, GalleryViewTemplate, debug, inherits) {
+    'text!streamhub-gallery/css/gallery-view.css'
+    //'css!streamhub-gallery/css/gallery-view.css'
+], function ($, Hammer, Animator, HorizontalListView, hasMore, GalleryViewTemplate, debug, inherits, css) {
     'use strict';
 
     var log = debug('streamhub-sdk/views/list-view');
@@ -32,32 +32,26 @@ define([
         opts = opts || {};
         opts.aspectRatio = opts.aspectRatio || 4/3;
         this._numVisible = opts.numVisible || 3;
+        opts.initial = opts.initial || this._numVisible * 2
+        this.showMoreElSelector = '.hub-list-more';
 
-        opts.more = opts.more || this._createMoreStream({ initial: this._numVisible * 2 });
+        //opts.more = opts.more || this._createMoreStream({ initial: this._numVisible * 2 });
 
         this._id = this.galleryListViewClassName + '-' + new Date().getTime();
         this._activeContentView = null;
         this._newContentCount = 0;
-        this._newQueue = this._createMoreStream(opts);
         this._jumping = false; // Whether a jumpTo is being performed
         this._forward = true; // Direction of paging
         this._isFocused = false; // Whether the gallery view is focused
         this._animator = opts.animator || new Animator(this);
 
         HorizontalListView.call(this, opts);
-        this.$galleryEl = this.$el.find('.'+this.galleryListViewClassName);
-
-        var self = this;
-        this._newQueue.on('readable', function () {
-            var content;
-            while (content = self._newQueue.read()) {
-                self.add(content);
-            }
-        });
 
         if (!STYLE_EL) {
-            STYLE_EL = $('<style></style>').text(GalleryViewCss).prependTo('head');
+           STYLE_EL = $('<style></style>').text(css).prependTo('head');
         }
+
+        this.$galleryEl = this.$el.find('.'+this.galleryListViewClassName);
     };
     inherits(GalleryView, HorizontalListView);
 
@@ -85,7 +79,7 @@ define([
      * @param requestMore {function} A function to call when done writing, so
      *     that _write will be called again with more data
      */
-    GalleryView.prototype._write = function (content, requestMore) {
+    /*GalleryView.prototype._write = function (content, requestMore) {
         this._newQueue.write(content);
 
         // If there is new content and we're not focused at the head, show notification
@@ -94,7 +88,7 @@ define([
             this._showNewNotification();
         }
         requestMore();
-    };
+    };*/
 
 
     /**

@@ -1,6 +1,6 @@
 define([
     'streamhub-sdk/content/views/content-list-view',
-    'streamhub-gallery/content/content-view-factory',
+    'streamhub-sdk/content/content-view-factory',
     'streamhub-sdk/jquery',
     'text!streamhub-gallery/css/horizontal-list-view.css',
     'streamhub-sdk/debug',
