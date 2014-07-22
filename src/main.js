@@ -8,7 +8,6 @@ define([
     'streamhub-sdk/debug',
     'inherits',
     'text!streamhub-gallery/css/gallery-view.css'
-    //'css!streamhub-gallery/css/gallery-view.css'
 ], function ($, Hammer, Animator, HorizontalListView, hasMore, GalleryViewTemplate, debug, inherits, css) {
     'use strict';
 

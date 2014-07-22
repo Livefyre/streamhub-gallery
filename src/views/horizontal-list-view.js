@@ -2,13 +2,12 @@ define([
     'streamhub-sdk/content/views/content-list-view',
     'streamhub-sdk/content/content-view-factory',
     'streamhub-sdk/jquery',
-    'text!streamhub-gallery/css/horizontal-list-view.css',
     'streamhub-sdk/debug',
     'inherits',
     'streamhub-gallery/package-attribute',
-    'css!streamhub-sdk/css/style'
-], function (ContentListView, HorizontalContentViewFactory, $,
-HorizontalListViewCss, debug, inherits, PackageAttribute, sdkCss) {
+    'css!streamhub-sdk/css/style',
+    'text!streamhub-gallery/css/horizontal-list-view.css'
+], function (ContentListView, HorizontalContentViewFactory, $, debug, inherits, PackageAttribute, sdkCss, css) {
     'use strict';
 
     var log = debug('streamhub-gallery/views/horizontal-list-view');
@@ -34,11 +33,15 @@ HorizontalListViewCss, debug, inherits, PackageAttribute, sdkCss) {
         ContentListView.call(this, opts);
 
         if (!STYLE_EL) {
-            STYLE_EL = $('<style></style>').text(HorizontalListViewCss).prependTo('head');
+            STYLE_EL = $('<style></style>').text(css).prependTo('head');
         }
 
         if(this.el){
             PackageAttribute.decorate(this.el);
+        }
+
+        if(this.modal){
+            PackageAttribute.decorateModal(this.modal);
         }
 
         var self = this;
