@@ -11,7 +11,6 @@ define([
     'streamhub-sdk/content/views/twitter-content-view',
     'streamhub-gallery/content/views/facebook-content-view',
     'streamhub-gallery/content/views/instagram-content-view',
-    'streamhub-sdk/content/views/gallery-on-focus-view',
     'inherits'
 ], function(
     Content,
@@ -26,7 +25,6 @@ define([
     TwitterContentView,
     FacebookContentView,
     InstagramContentView,
-    GalleryOnFocusView,
     inherits
 ) {
 
@@ -48,20 +46,19 @@ define([
      * type function, useful for conditional view selection.).
      */
     ContentViewFactory.prototype.contentRegistry = [
-        { type: LivefyreTwitterContent, view: TwitterContentView },
-        { type: LivefyreFacebookContent, view: FacebookContentView },
-        { type: LivefyreInstagramContent, view: InstagramContentView },
-        { type: TwitterContent, view: TwitterContentView },
-        { type: LivefyreContent, view: ContentView },
-        { type: Content, view: ContentView }
+        { type: LivefyreTwitterContent, view: TwitterContentView,
+            typeUrn: 'urn:livefyre:js:streamhub-sdk:content:types:livefyre-twitter' },
+        { type: LivefyreFacebookContent, view: FacebookContentView,
+            typeUrn: 'urn:livefyre:js:streamhub-sdk:content:types:livefyre-facebook' },
+        { type: LivefyreInstagramContent, view: InstagramContentView,
+            typeUrn: 'urn:livefyre:js:streamhub-sdk:content:types:livefyre-instagram' },
+        { type: TwitterContent, view: TwitterContentView,
+            typeUrn: 'urn:livefyre:js:streamhub-sdk:content:types:twitter' },
+        { type: LivefyreContent, view: ContentView,
+            typeUrn: 'urn:livefyre:js:streamhub-sdk:content:types:livefyre' },
+        { type: Content, view: ContentView,
+            typeUrn: 'urn:livefyre:js:streamhub-sdk:content' }
     ];
-
-    ContentViewFactory.prototype._createAttachmentsView = function (content) {
-        var tiledAttachmentListView = new TiledAttachmentListView();
-        return new GalleryOnFocusView(tiledAttachmentListView, {
-            content: content
-        });
-    };
 
     return ContentViewFactory;
 });

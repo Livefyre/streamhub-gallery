@@ -6,7 +6,9 @@ define([
     'text!streamhub-gallery/css/gallery-view.css',
     'hgn!streamhub-gallery/templates/gallery-view',
     'streamhub-sdk/debug',
-    'inherits'
+    'inherits',
+    'streamhub-gallery/package-attribute',
+    'css!streamhub-sdk/css/style'
 ], function ($, Hammer, Animator, HorizontalListView, GalleryViewCss, GalleryViewTemplate, debug, inherits) {
     'use strict';
 
@@ -30,6 +32,7 @@ define([
         opts = opts || {};
         opts.aspectRatio = opts.aspectRatio || 4/3;
         this._numVisible = opts.numVisible || 3;
+
         opts.more = opts.more || this._createMoreStream({ initial: this._numVisible * 2 });
 
         this._id = this.galleryListViewClassName + '-' + new Date().getTime();

@@ -4,9 +4,11 @@ define([
     'streamhub-sdk/jquery',
     'text!streamhub-gallery/css/horizontal-list-view.css',
     'streamhub-sdk/debug',
-    'inherits'
+    'inherits',
+    'streamhub-gallery/package-attribute',
+    'css!streamhub-sdk/css/style'
 ], function (ContentListView, HorizontalContentViewFactory, $,
-HorizontalListViewCss, debug, inherits) {
+HorizontalListViewCss, debug, inherits, PackageAttribute, sdkCss) {
     'use strict';
 
     var log = debug('streamhub-gallery/views/horizontal-list-view');
@@ -33,6 +35,10 @@ HorizontalListViewCss, debug, inherits) {
 
         if (!STYLE_EL) {
             STYLE_EL = $('<style></style>').text(HorizontalListViewCss).prependTo('head');
+        }
+
+        if(this.el){
+            PackageAttribute.decorate(this.el);
         }
 
         var self = this;
