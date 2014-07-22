@@ -70,26 +70,6 @@ define([
         this.jumpTo(this._activeContentView);
     };
 
-
-    /**
-     * @private
-     * Called automatically by the Writable base class when .write() is called
-     * @param content {Content} Content to display in the ListView
-     * @param requestMore {function} A function to call when done writing, so
-     *     that _write will be called again with more data
-     */
-    /*GalleryView.prototype._write = function (content, requestMore) {
-        this._newQueue.write(content);
-
-        // If there is new content and we're not focused at the head, show notification
-        if (this.views.indexOf(this._activeContentView) !== 0) {
-            this._newContentCount++;
-            this._showNewNotification();
-        }
-        requestMore();
-    };*/
-
-
     /**
      * Set the element for the view to render in.
      * You will probably want to call .render() after this, but not always.
