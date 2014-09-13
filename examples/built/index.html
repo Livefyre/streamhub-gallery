@@ -12,22 +12,15 @@
         
         <div id="view"></div>
 
-        <script src="../../lib/cajon/cajon.js" type="text/javascript"></script>
-        <script src="../../lib/requirejs/require.js" type="text/javascript"></script>
-        <script src="/requirejs.conf.js" type="text/javascript"></script>
+        <script src="http://cdn.livefyre.com/libs/sdk/v2.13.5/streamhub-sdk.min.js"></script>
+        <script src="../../dist/streamhub-gallery.min.js" type="text/javascript"></script>
         <script>
-            requirejs({
-                baseUrl: "/"
-            });
-        </script>
-        <script>
-        require([
-            'streamhub-gallery',
-            'streamhub-sdk/content',
-            'streamhub-sdk-tests/mocks/mock-attachments-stream',
-            'streamhub-sdk-tests/mocks/mock-stream'
-        ],function (Gallery, Content, MockAttachmentsStream, MockStream) {
-            window.Content = Content;
+        (function () {
+            var SDK = Livefyre.require('streamhub-sdk');
+            var Gallery = Livefyre.require('streamhub-gallery');
+
+            window.Content = SDK.Content;
+            debugger;
             window.CoverflowAnimator = Gallery.CoverflowAnimator;
             window.CarouselAnimator = Gallery.CarouselAnimator;
             var view = window.view = new Gallery.GalleryView({
@@ -36,11 +29,17 @@
                 ,numVisible: 6
                 //,modal: false
             });
+           
+            var opts = {
+                "network": "livefyre.com",
+                siteId: '290634',
+                articleId: 'joe-test',
+                "environment": "qa-ext.livefyre.com"
+            };
+            var collection = new SDK.Collection(opts);
 
-            (new MockAttachmentsStream()).pipe(view, { end: false });
-            window.mockStream = new MockStream.LivefyreContent();
-            (window.mockStream).pipe(view.more);
-        });
+            collection.pipe(view);
+        }());
         </script>
     </body>
 </html>

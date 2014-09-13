@@ -75,7 +75,6 @@ requirejs.config({
     main: "less"
   }
   ],
-  include: ['streamhub-gallery/animators/coverflow-animator', 'streamhub-gallery/animators/carousel-animator'],
   css: {
     clearFileEachBuild: 'dist/streamhub-gallery.min.css',
     transformEach: {
