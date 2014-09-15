@@ -5,6 +5,9 @@ streamhub-gallery is a [StreamHub App](http://apps.livefyre.com) that displays s
 Classic Gallery
 ![Gallery View](http://i.imgur.com/9VoyWji.png)
 
+## Demo
+http://codepen.io/cheung31/pen/Djdia
+
 ## Getting Started
 
 The quickest way to use streamhub-gallery is to use the built version hosted on Livefyre's CDN.
