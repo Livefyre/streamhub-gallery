@@ -40,7 +40,6 @@
     "base64": "~0.4.0",
     "auth": "~0.2",
     "livefyre-bootstrap": "~1.3.4",
-    "streamhub-share": "0.1.3",
     "streamhub-ui": "~0.1.3"
   }
 }
