@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../../lib/streamhub-sdk/src/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../src/css/style.css">
-
     <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
     <style>
@@ -26,15 +23,11 @@
         require([
             'streamhub-sdk',
             'streamhub-sdk/content',
-            'streamhub-gallery/animators/coverflow-animator',
-            'streamhub-gallery/animators/carousel-animator',
             'streamhub-sdk/collection',
             'streamhub-gallery',
             'streamhub-sdk-tests/mocks/mock-attachments-stream'
-        ],function (Hub, Content, CoverflowAnimator, CarouselAnimator, Collection, GalleryView, MockAttachmentsStream) {
+        ],function (Hub, Content, Collection, GalleryView, MockAttachmentsStream) {
             window.Content = Content;
-            window.CoverflowAnimator = CoverflowAnimator;
-            window.CarouselAnimator = CarouselAnimator;
             var view = window.view = new GalleryView({
                 el: document.getElementById("view")
                 ,aspectRatio: 4/3
@@ -43,10 +36,10 @@
             });
            
             var opts = {
-                network: "labs.fyre.co",
-                environment: "livefyre.com",
-                siteId: "315833",
-                articleId: 'livefyre-tweets'
+                "network": "livefyre.com",
+                siteId: '290634',
+                articleId: 'joe-test',
+                "environment": "qa-ext.livefyre.com"
             };
             var collection = new Collection(opts);
 
