@@ -26,11 +26,11 @@
             'streamhub-sdk/content',
             'streamhub-sdk-tests/mocks/mock-attachments-stream',
             'streamhub-sdk-tests/mocks/mock-stream'
-        ],function (Gallery, Content, MockAttachmentsStream, MockStream) {
+        ],function (GalleryView, Content, MockAttachmentsStream, MockStream) {
             window.Content = Content;
             window.CoverflowAnimator = Gallery.CoverflowAnimator;
             window.CarouselAnimator = Gallery.CarouselAnimator;
-            var view = window.view = new Gallery.GalleryView({
+            var view = window.view = new GalleryView({
                 el: document.getElementById("view")
                 ,aspectRatio: 4/3
                 ,numVisible: 6

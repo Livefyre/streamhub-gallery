@@ -17,13 +17,13 @@
         <script>
         (function () {
             var SDK = Livefyre.require('streamhub-sdk');
-            var Gallery = Livefyre.require('streamhub-gallery');
+            var GalleryView = Livefyre.require('streamhub-gallery');
 
             window.Content = SDK.Content;
             debugger;
             window.CoverflowAnimator = Gallery.CoverflowAnimator;
             window.CarouselAnimator = Gallery.CarouselAnimator;
-            var view = window.view = new Gallery.GalleryView({
+            var view = window.view = new GalleryView({
                 el: document.getElementById("view")
                 ,aspectRatio: 4/3
                 ,numVisible: 6
