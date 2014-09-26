@@ -52,7 +52,7 @@ define([
         this._jumping = false; // Whether a jumpTo is being performed
         this._forward = true; // Direction of paging
         this._isFocused = false; // Whether the gallery view is focused
-        this._animator = opts.animator || new Animator(this);
+        this._animator = opts.animator ? new opts.animator(this) : new Animator(this);
 
         HorizontalListView.call(this, opts);
 

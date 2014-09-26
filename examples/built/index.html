@@ -17,15 +17,17 @@
         <script>
         (function () {
             var SDK = Livefyre.require('streamhub-sdk');
-            var GalleryView = Livefyre.require('streamhub-gallery');
+            var Gallery = Livefyre.require('streamhub-gallery');
 
             window.Content = SDK.Content;
+            window.Animator = Gallery.Animator;
             window.CoverflowAnimator = Gallery.CoverflowAnimator;
             window.CarouselAnimator = Gallery.CarouselAnimator;
-            var view = window.view = new GalleryView({
+            var view = window.view = new Gallery({
                 el: document.getElementById("view")
                 ,aspectRatio: 4/3
                 ,numVisible: 6
+                ,animator: Gallery.CoverflowAnimator
                 //,modal: false
             });
            

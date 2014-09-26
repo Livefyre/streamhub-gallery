@@ -58,7 +58,7 @@ The ```GalleryView``` constructor accepts the ```animator``` option. By passing 
         var CoverflowAnimator = Livefyre.require('streamhub-gallery/animators/coverflow-animator');
         var view = new GalleryView({
         	el: document.getElementById("myGallery"),
-        	animator: new CoverflowAnimator()
+        	animator: CoverflowAnimator // Animator class to be instantiated
     	});
 
 
