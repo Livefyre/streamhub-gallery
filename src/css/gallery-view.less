@@ -31,21 +31,41 @@
         .content-attachments-2 > * {
             width: 100%;
         }
+        .content-body {
+            position: absolute;
+            overflow-x: hidden;
+            overflow-y: auto;
+            top: 3em;
+            left: 0;
+            right: 0;
+            bottom: 2em;
+
+            .content-body-main {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+            p {
+                margin: 0 0 1em 0;
+            }
+        }
+        .content-footer {
+            display: block;
+            position: absolute;
+            z-index: 3;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-height: 50px;
+            padding: 0 20px 10px 20px;
+        }
+        .hub-content-share {
+            display: none;
+        }
     }
 
     .content-attachments-stacked {
         display: none;
-    }
-
-    .content-footer {
-        display: block;
-        position: absolute;
-        z-index: 3;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 20%;
-        max-height: 50px;
     }
 
     .content-created-at a {

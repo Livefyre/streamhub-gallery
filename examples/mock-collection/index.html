@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <style>
+        body { font-family: Helvetica, Arial, sans-serif; position: absolute; width: 100%; margin: 0; padding: 0; background-color: #333; }
+    </style>
+</head>
+    <body class="classic">
+        
+        <div id="view"></div>
+
+        <script src="../../lib/cajon/cajon.js" type="text/javascript"></script>
+        <script src="../../requirejs.conf.js" type="text/javascript"></script>
+        <script src="https://cdn.livefyre.com/Livefyre.js"></script>
+        <script>
+            requirejs({
+                baseUrl: "../../"
+            });
+        </script>
+        <script>
+        require([
+            'streamhub-sdk',
+            'streamhub-sdk/content',
+            'streamhub-sdk/collection',
+            'streamhub-gallery',
+            'streamhub-sdk-tests/mocks/mock-attachments-stream'
+        ],function (Hub, Content, Collection, GalleryView, MockAttachmentsStream) {
+            window.Content = Content;
+            var view = window.view = new GalleryView({
+                el: document.getElementById("view")
+                ,aspectRatio: 4/3
+                ,numVisible: 6
+                //,modal: false
+            });
+
+            withCollection(function (err, collection) {
+                collection.pipe(view);
+            });
+        });
+
+        function withCollection(cb) {
+            Livefyre.require(['appkit-mock-content#0'], function (MockCollection) {
+                var collection = new MockCollection();
+                cb(null, collection);
+            });
+        }
+        </script>
+    </body>
+</html>
